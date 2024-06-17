@@ -4,7 +4,7 @@ import {useLoaderData} from '@remix-run/react';
 
 import type {SectionDefaultProps} from '~/lib/type';
 import type {COLLECTION_BANNER_SECTION_FRAGMENT} from '~/qroq/sections';
-import type {loader} from '~/routes/($locale).collections.$collectionHandle';
+import type {loader} from '~/routes/collections.$collectionHandle';
 
 import {
   Banner,

@@ -8,7 +8,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      type: 'internationalizedArrayString',
+      type: 'string',
       title: 'Title',
     }),
     defineField({
@@ -30,9 +30,9 @@ export default defineType({
     select: {
       title: 'title',
     },
-    prepare({title}) {
+    prepare({title}: {title: string}) {
       return {
-        title: title?.[0]?.value || 'No title',
+        title: title || 'No title',
       };
     },
   },

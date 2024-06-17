@@ -8,7 +8,7 @@ export default defineField({
   fields: [
     defineField({
       name: 'richtext',
-      type: 'internationalizedArrayRichtext',
+      type: 'richtext',
     }),
     defineField({
       name: 'desktopContentPosition',

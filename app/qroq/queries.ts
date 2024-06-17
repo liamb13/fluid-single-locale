@@ -15,7 +15,6 @@ import {
   SECTIONS_FRAGMENT,
 } from './sections';
 import {THEME_CONTENT_FRAGMENT} from './themeContent';
-import {getIntValue} from './utils';
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +62,9 @@ export const PAGE_QUERY = q('*')
     sections: SECTIONS_FRAGMENT,
     seo: q('seo')
       .grab({
-        description: [getIntValue('description'), q.string().nullable()],
+        description: q.string().nullable(),
         image: q('image').grab(IMAGE_FRAGMENT).nullable(),
-        title: [getIntValue('title'), q.string().nullable()],
+        title: q.string().nullable(),
       })
       .nullable(),
   })

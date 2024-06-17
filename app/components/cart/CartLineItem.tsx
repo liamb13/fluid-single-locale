@@ -11,7 +11,6 @@ import {
 } from '@shopify/hydrogen';
 
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 import {cn} from '~/lib/utils';
 
@@ -45,9 +44,7 @@ export function CartLineItem({
   const optimisticData = useOptimisticData<OptimisticData>('cart-line-item');
   const {id, merchandise} = line;
   const variantId = parseGid(merchandise?.id)?.id;
-  const productPath = useLocalePath({
-    path: `/products/${merchandise.product.handle}?variant=${variantId}`,
-  });
+  const productPath = `/products/${merchandise.product.handle}?variant=${variantId}`;
   const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
   const cartIsLoading = Boolean(addToCartFetchers.length);
 
@@ -149,7 +146,7 @@ function ItemRemoveButton({
   lineId: CartLineFragment['id'];
   loading: boolean;
 }) {
-  const cartPath = useLocalePath({path: '/cart'});
+  const cartPath = '/cart';
   const {themeContent} = useSanityThemeContent();
 
   return (
@@ -208,7 +205,7 @@ function UpdateCartForm({
   children: React.ReactNode;
   lines: CartLineUpdateInput[];
 }) {
-  const cartPath = useLocalePath({path: '/cart'});
+  const cartPath = '/cart';
 
   return (
     <CartForm

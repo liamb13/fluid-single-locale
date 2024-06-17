@@ -31,7 +31,6 @@ import {CustomAnalytics} from './components/CustomAnalytics';
 import {Fonts} from './components/Fonts';
 import {generateSanityImageUrl} from './components/sanity/SanityImage';
 import {Button} from './components/ui/Button';
-import {useLocalePath} from './hooks/useLocalePath';
 import {useSanityThemeContent} from './hooks/useSanityThemeContent';
 import {generateFontsPreloadLinks} from './lib/fonts';
 import {resolveShopifyPromises} from './lib/resolveShopifyPromises';
@@ -93,27 +92,13 @@ export const meta: MetaFunction<typeof loader> = (loaderData) => {
 };
 
 export async function loader({context, request}: LoaderFunctionArgs) {
-  const {
-    cart,
-    customerAccount,
-    env,
-    locale,
-    sanity,
-    sanityPreviewMode,
-    storefront,
-  } = context;
-  const language = locale?.language.toLowerCase();
+  const {cart, customerAccount, env, sanity, sanityPreviewMode, storefront} =
+    context;
   const isLoggedInPromise = customerAccount.isLoggedIn();
-
-  const queryParams = {
-    defaultLanguage: DEFAULT_LOCALE.language.toLowerCase(),
-    language,
-  };
 
   const rootData = Promise.all([
     sanity.query({
       groqdQuery: ROOT_QUERY,
-      params: queryParams,
     }),
     storefront.query(`#graphql
       query layout {
@@ -172,7 +157,6 @@ export async function loader({context, request}: LoaderFunctionArgs) {
     featuredCollectionPromise,
     featuredProductPromise,
     isLoggedIn: isLoggedInPromise,
-    locale,
     sanityPreviewMode,
     sanityRoot,
     seo,
@@ -182,7 +166,7 @@ export async function loader({context, request}: LoaderFunctionArgs) {
     }),
     ...sanityPreviewPayload({
       context,
-      params: queryParams,
+      params: {},
       query: ROOT_QUERY.query,
     }),
   });
@@ -190,11 +174,10 @@ export async function loader({context, request}: LoaderFunctionArgs) {
 
 export default function App() {
   const nonce = useNonce();
-  const {locale} = useRootLoaderData();
   const data = useLoaderData<typeof loader>();
 
   return (
-    <html lang={locale.language.toLowerCase()}>
+    <html lang={DEFAULT_LOCALE.language.toLowerCase()}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -225,11 +208,10 @@ export default function App() {
 export function ErrorBoundary() {
   const nonce = useNonce();
   const routeError = useRouteError();
-  const {locale} = useRootLoaderData();
   const isRouteError = isRouteErrorResponse(routeError);
   const {themeContent} = useSanityThemeContent();
   const errorStatus = isRouteError ? routeError.status : 500;
-  const collectionsPath = useLocalePath({path: '/collections'});
+  const collectionsPath = '/collections';
   const navigate = useNavigate();
 
   let title = themeContent?.error?.serverError;
@@ -241,7 +223,7 @@ export function ErrorBoundary() {
   }
 
   return (
-    <html lang={locale.language.toLowerCase()}>
+    <html lang={DEFAULT_LOCALE.language.toLowerCase()}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />

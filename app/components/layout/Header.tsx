@@ -10,7 +10,6 @@ import React, {useEffect, useState} from 'react';
 
 import {useBoundedScroll} from '~/hooks/useBoundedScroll';
 import {useColorsCssVars} from '~/hooks/useColorsCssVars';
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityRoot} from '~/hooks/useSanityRoot';
 import {cn} from '~/lib/utils';
 
@@ -28,7 +27,7 @@ export function Header() {
   const logoWidth = header?.desktopLogoWidth
     ? `${header?.desktopLogoWidth}px`
     : undefined;
-  const homePath = useLocalePath({path: '/'});
+  const homePath = '/';
   const colorsCssVars = useColorsCssVars({
     selector: 'header',
     settings: header,

@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity';
-import {SlugInt, validateIntSlug} from '../../utils/slug';
 
 export default defineType({
   name: 'blogPost',
@@ -9,7 +8,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      type: 'internationalizedArrayString',
+      type: 'string',
       title: 'Title',
     }),
     defineField({
@@ -18,21 +17,18 @@ export default defineType({
     }),
     defineField({
       name: 'slug',
-      type: 'internationalizedArraySlug',
+      type: 'slug',
       title: 'Slug',
-      validation: (Rule) =>
-        Rule.required().custom((slugArray: SlugInt[], context) =>
-          validateIntSlug({slugArray, context}),
-        ),
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
     select: {
       title: 'title',
     },
-    prepare({title}) {
+    prepare({title}: {title: string}) {
       return {
-        title: title?.[0]?.value || 'No title',
+        title: title || 'No title',
       };
     },
   },

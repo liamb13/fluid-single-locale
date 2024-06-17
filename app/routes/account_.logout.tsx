@@ -11,8 +11,7 @@ export async function doLogout(context: AppLoadContext) {
 }
 
 export async function loader({params}: LoaderFunctionArgs) {
-  const locale = params.locale;
-  return redirect(locale ? `/${locale}` : '/');
+  return redirect('/');
 }
 
 export const action: ActionFunction = async ({context}: ActionFunctionArgs) => {

@@ -5,7 +5,6 @@ import {useLoaderData} from '@remix-run/react';
 import {Analytics, getSelectedProductOptions} from '@shopify/hydrogen';
 import {ProductProvider} from '@shopify/hydrogen-react';
 import {defer} from '@shopify/remix-oxygen';
-import {DEFAULT_LOCALE} from 'countries';
 import invariant from 'tiny-invariant';
 
 import {CmsSection} from '~/components/CmsSection';
@@ -24,16 +23,13 @@ export const meta: MetaFunction<typeof loader> = mergeMeta(({matches}) =>
 
 export async function loader({context, params, request}: LoaderFunctionArgs) {
   const {productHandle} = params;
-  const {locale, sanity, storefront} = context;
-  const language = locale?.language.toLowerCase();
+  const {sanity, storefront} = context;
 
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
 
   const queryParams = {
-    defaultLanguage: DEFAULT_LOCALE.language.toLowerCase(),
-    language,
     productHandle,
   };
 
@@ -44,9 +40,7 @@ export async function loader({context, params, request}: LoaderFunctionArgs) {
     }),
     storefront.query<ProductQuery>(PRODUCT_QUERY, {
       variables: {
-        country: storefront.i18n.country,
         handle: productHandle,
-        language: storefront.i18n.language,
         selectedOptions,
       },
     }),
@@ -65,9 +59,7 @@ export async function loader({context, params, request}: LoaderFunctionArgs) {
   // this deferred query resolves, the UI will update.
   const variants = storefront.query(VARIANTS_QUERY, {
     variables: {
-      country: storefront.i18n.country,
       handle: productHandle,
-      language: storefront.i18n.language,
     },
   });
 

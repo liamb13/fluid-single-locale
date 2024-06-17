@@ -4,7 +4,6 @@ import {Link} from '@remix-run/react';
 import {stegaClean} from '@sanity/client/stega';
 import {cx} from 'class-variance-authority';
 
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityRoot} from '~/hooks/useSanityRoot';
 import {cn} from '~/lib/utils';
 
@@ -34,7 +33,7 @@ export function CollectionCard(props: {
     '100vw',
   ]);
 
-  const path = useLocalePath({path: `/collections/${collection?.handle}`});
+  const path = `/collections/${collection?.handle}`;
 
   const cardClass = cn(
     style === 'card'

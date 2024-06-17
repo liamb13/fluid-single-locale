@@ -4,10 +4,7 @@ import {
   DocumentLocationsState,
 } from 'sanity/presentation';
 import {map, Observable} from 'rxjs';
-import {getAllLanguages} from '../../countries';
 
-const languages = getAllLanguages();
-const defaultLanguage = languages[0];
 const sanityPreviewPath = (slug?: string) => `/sanity/preview?slug=/${slug}`;
 
 export const locate: DocumentLocationResolver = (params, context) => {
@@ -30,7 +27,7 @@ export const locate: DocumentLocationResolver = (params, context) => {
           _id: string;
           _type: string;
           slug?: {current: string};
-          title?: {_key: 'string'; value: string}[];
+          title?: string;
           store?: {slug: {current: string}; title: string};
         }[]
       | null
@@ -48,14 +45,13 @@ export const locate: DocumentLocationResolver = (params, context) => {
          * Home
          */
         const home = docs.find(({_type}) => _type === 'home');
-        const homeLocations = home
-          ? languages.map(({id, title}) => ({
-              href:
-                id === defaultLanguage.id
-                  ? sanityPreviewPath('')
-                  : sanityPreviewPath(id),
-              title: `Home (${title})`,
-            }))
+        const homeLocation = home
+          ? [
+              {
+                href: sanityPreviewPath(''),
+                title: 'Home',
+              },
+            ]
           : [];
 
         /**
@@ -69,19 +65,12 @@ export const locate: DocumentLocationResolver = (params, context) => {
               title: string;
             }> = [];
 
-            for (const lang of languages) {
-              const isDefaultLanguage = lang.id === defaultLanguage.id;
-              const pageTitle = title?.find((t) => t._key === lang.id)?.value;
+            const pageTitle = title;
 
-              locations.push({
-                href: isDefaultLanguage
-                  ? sanityPreviewPath(slug?.current)
-                  : sanityPreviewPath(`${lang.id}/${slug?.current}`),
-                title: pageTitle
-                  ? `${pageTitle} (${lang.title})`
-                  : `Page (${lang.title})`,
-              });
-            }
+            locations.push({
+              href: sanityPreviewPath(slug?.current),
+              title: pageTitle ? pageTitle : 'Page',
+            });
 
             return locations;
           })
@@ -100,19 +89,10 @@ export const locate: DocumentLocationResolver = (params, context) => {
               title: string;
             }> = [];
 
-            for (const lang of languages) {
-              const isDefaultLanguage = lang.id === defaultLanguage.id;
-              locations.push({
-                href: isDefaultLanguage
-                  ? sanityPreviewPath(`products/${store?.slug?.current}`)
-                  : sanityPreviewPath(
-                      `${lang.id}/products/${store?.slug?.current}`,
-                    ),
-                title:
-                  `${store?.title} (${lang.title})` ||
-                  `Product (${lang.title})`,
-              });
-            }
+            locations.push({
+              href: `products/${store?.slug?.current}`,
+              title: store?.title || 'Product',
+            });
 
             return locations;
           })
@@ -132,20 +112,10 @@ export const locate: DocumentLocationResolver = (params, context) => {
               title: string;
             }> = [];
 
-            for (const lang of languages) {
-              const isDefaultLanguage = lang.id === defaultLanguage.id;
-
-              locations.push({
-                href: isDefaultLanguage
-                  ? sanityPreviewPath(`collections/${store?.slug?.current}`)
-                  : sanityPreviewPath(
-                      `${lang.id}/collections/${store?.slug?.current}`,
-                    ),
-                title: store?.title
-                  ? `${store?.title} (${lang.title})`
-                  : `Collection (${lang.title})`,
-              });
-            }
+            locations.push({
+              href: sanityPreviewPath(`collections/${store?.slug?.current}`),
+              title: store?.title ? store?.title : 'Collection',
+            });
 
             return locations;
           })
@@ -156,7 +126,7 @@ export const locate: DocumentLocationResolver = (params, context) => {
             ...collectionsLocations,
             ...pagesLocations,
             ...productsLocations,
-            ...homeLocations,
+            ...homeLocation,
           ].filter(Boolean),
         } satisfies DocumentLocationsState;
       }),

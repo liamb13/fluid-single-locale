@@ -5,7 +5,7 @@ import {Suspense} from 'react';
 
 import type {SectionDefaultProps} from '~/lib/type';
 import type {RELATED_PRODUCTS_SECTION_FRAGMENT} from '~/qroq/sections';
-import type {loader} from '~/routes/($locale).products.$productHandle';
+import type {loader} from '~/routes/products.$productHandle';
 
 import {Skeleton} from '../Skeleton';
 import {ProductCardGrid} from '../product/ProductCardGrid';

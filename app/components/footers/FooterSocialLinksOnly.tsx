@@ -6,7 +6,7 @@ import type {FOOTER_SOCIAL_LINKS_ONLY_FRAGMENT} from '~/qroq/footers';
 import {useColorsCssVars} from '~/hooks/useColorsCssVars';
 
 import {SocialMediaButtons} from '../SocialMedia';
-import {CountrySelector} from '../layout/CountrySelector';
+import {CountryDisplay} from '../layout/CountryDisplay';
 
 type FooterSocialLinksOnlyProps = TypeFromSelection<
   typeof FOOTER_SOCIAL_LINKS_ONLY_FRAGMENT
@@ -27,7 +27,7 @@ export function FooterSocialLinksOnly(
       <div className="flex flex-wrap items-center justify-center gap-1">
         <SocialMediaButtons />
       </div>
-      <CountrySelector />
+      <CountryDisplay />
       <p className="mt-4">{data.copyright}</p>
     </div>
   );

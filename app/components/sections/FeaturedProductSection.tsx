@@ -25,6 +25,7 @@ import type {loader as indexLoader} from '../../routes/_index';
 import {ShopifyImage} from '../ShopifyImage';
 import {Skeleton} from '../Skeleton';
 import {ProductDetails} from '../product/ProductDetails';
+import {DEFAULT_LOCALE} from 'countries';
 
 export type FeaturedProductSectionProps = TypeFromSelection<
   typeof FEATURED_PRODUCT_SECTION_FRAGMENT
@@ -118,7 +119,6 @@ function FeaturedProductSkeleton({
   imageAspectRatio: AspectRatioData;
   isError?: true;
 }) {
-  const {locale} = useRootLoaderData();
   const sanityProduct = stegaClean(data.product?.store);
   const variants: PartialObjectDeep<
     ProductVariantConnection,
@@ -137,7 +137,7 @@ function FeaturedProductSkeleton({
       id: sanityProduct.firstVariant?.store.gid,
       price: {
         amount: sanityProduct?.firstVariant?.store.price.toString() || '0',
-        currencyCode: locale.currency,
+        currencyCode: DEFAULT_LOCALE.currency,
       },
       selectedOptions: [],
     });

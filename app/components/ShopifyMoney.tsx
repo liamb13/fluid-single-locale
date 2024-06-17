@@ -5,7 +5,7 @@ import {stegaClean} from '@sanity/client/stega';
 import {Money} from '@shopify/hydrogen';
 
 import {useSanityRoot} from '~/hooks/useSanityRoot';
-import {cn, setShowTrailingZeroKeyValue} from '~/lib/utils';
+import {cn} from '~/lib/utils';
 import {useRootLoaderData} from '~/root';
 
 export function ShopifyMoney({
@@ -20,13 +20,9 @@ export function ShopifyMoney({
     }
   >;
 }) {
-  const {locale} = useRootLoaderData();
   const {data: sanityRootData} = useSanityRoot();
-  const key = setShowTrailingZeroKeyValue(locale);
   const showCurrencyCodes = sanityRootData?.settings?.showCurrencyCodes;
-  const showTrailingZeros = sanityRootData?.settings?.showTrailingZeros?.find(
-    (k) => stegaClean(k) === key,
-  );
+  const showTrailingZeros = sanityRootData?.settings?.showTrailingZeros;
 
   return (
     <Money

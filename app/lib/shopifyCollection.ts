@@ -10,8 +10,6 @@ import {
   type SortParam,
 } from '~/components/collection/SortFilterLayout';
 
-import type {I18nLocale} from './type';
-
 import {parseAsCurrency} from './utils';
 
 export function getFiltersFromParam(searchParams: URLSearchParams) {
@@ -41,14 +39,12 @@ export function getFiltersFromParam(searchParams: URLSearchParams) {
 
 export function getAppliedFilters({
   collection,
-  locale,
   searchParams,
 }: {
   collection?: ShopifyCollection;
-  locale?: I18nLocale;
   searchParams: URLSearchParams;
 }) {
-  if (!locale || !collection) {
+  if (!collection) {
     return [];
   }
 
@@ -83,10 +79,8 @@ export function getAppliedFilters({
       if (foundValue.id === 'filter.v.price') {
         // Special case for price, we want to show the min and max values as the label.
         const input = JSON.parse(foundValue.input as string) as ProductFilter;
-        const min = parseAsCurrency(input.price?.min ?? 0, locale);
-        const max = input.price?.max
-          ? parseAsCurrency(input.price.max, locale)
-          : '';
+        const min = parseAsCurrency(input.price?.min ?? 0);
+        const max = input.price?.max ? parseAsCurrency(input.price.max) : '';
         const label = min && max ? `${min} - ${max}` : 'Price';
 
         return {

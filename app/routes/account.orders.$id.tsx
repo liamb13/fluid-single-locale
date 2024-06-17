@@ -16,11 +16,9 @@ export const meta: MetaFunction<typeof loader> = ({data}) => {
 };
 
 export async function loader({context, params, request}: LoaderFunctionArgs) {
-  const {customerAccount, locale, session} = context;
+  const {customerAccount, session} = context;
   if (!params.id) {
-    return redirect(
-      locale.default ? '/account' : `${locale.pathPrefix}/account`,
-    );
+    return redirect('/account');
   }
 
   const queryParams = new URL(request.url).searchParams;

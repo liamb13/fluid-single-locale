@@ -11,7 +11,6 @@ import {json, redirectDocument} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 
 import {Cart} from '~/components/cart/Cart';
-import {isLocalPath} from '~/lib/utils';
 
 export async function action({context, request}: ActionFunctionArgs) {
   const {cart} = context;
@@ -62,7 +61,7 @@ export async function action({context, request}: ActionFunctionArgs) {
   const headers = cart.setCartId(result.cart.id);
 
   const redirectTo = formData.get('redirectTo') ?? null;
-  if (typeof redirectTo === 'string' && isLocalPath(redirectTo)) {
+  if (typeof redirectTo === 'string') {
     return redirectDocument(redirectTo, 303);
   }
 

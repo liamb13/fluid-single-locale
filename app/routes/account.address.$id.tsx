@@ -23,9 +23,9 @@ import {
 } from '~/graphql/customer-account/mutations';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 
-import type {AccountOutletContext} from './($locale).account.edit';
+import type {AccountOutletContext} from './account.edit';
 
-import {doLogout} from './($locale).account_.logout';
+import {doLogout} from './account_.logout';
 
 interface ActionData {
   formError?: string;
@@ -62,14 +62,11 @@ export const action: ActionFunction = async ({context, params, request}) => {
         data?.customerAddressDelete?.userErrors?.[0]?.message,
       );
 
-      return redirect(
-        params?.locale ? `${params?.locale}/account` : '/account',
-        {
-          headers: {
-            'Set-Cookie': await context.session.commit(),
-          },
+      return redirect('/account', {
+        headers: {
+          'Set-Cookie': await context.session.commit(),
         },
-      );
+      });
     } catch (error: any) {
       return json(
         {formError: error.message},
@@ -128,14 +125,11 @@ export const action: ActionFunction = async ({context, params, request}) => {
         'AddressCreation',
       );
 
-      return redirect(
-        params?.locale ? `${params?.locale}/account` : '/account',
-        {
-          headers: {
-            'Set-Cookie': await context.session.commit(),
-          },
+      return redirect('/account', {
+        headers: {
+          'Set-Cookie': await context.session.commit(),
         },
-      );
+      });
     } catch (error: any) {
       return json(
         {formError: error.message},
@@ -167,14 +161,11 @@ export const action: ActionFunction = async ({context, params, request}) => {
         data?.customerAddressUpdate?.userErrors?.[0]?.message,
       );
 
-      return redirect(
-        params?.locale ? `${params?.locale}/account` : '/account',
-        {
-          headers: {
-            'Set-Cookie': await context.session.commit(),
-          },
+      return redirect('/account', {
+        headers: {
+          'Set-Cookie': await context.session.commit(),
         },
-      );
+      });
     } catch (error: any) {
       return json(
         {formError: error.message},

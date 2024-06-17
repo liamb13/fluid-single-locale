@@ -8,7 +8,7 @@ export default defineField({
     defineField({
       name: 'copyright',
       title: 'Copyright',
-      type: 'internationalizedArrayString',
+      type: 'string',
     }),
     defineField({
       type: 'sectionSettings',
@@ -19,9 +19,9 @@ export default defineField({
     select: {
       title: 'copyright',
     },
-    prepare({title}: any) {
+    prepare({title}: {title: string}) {
       return {
-        title: title?.[0]?.value || 'Missing title',
+        title: title || 'Missing title',
       };
     },
   },

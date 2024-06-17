@@ -21,239 +21,239 @@ export default defineType({
       fields: [
         defineField({
           name: 'welcome',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'welcomeToYourAccount',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'accountDetails',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'signOut',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderHistory',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'noOrdersMessage',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'startShopping',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderDetail',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'returnToAccount',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderNumber',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'placedOn',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'product',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'price',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'quantity',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'total',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'subtotal',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'discounts',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'discountsOff',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'tax',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'shippingAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'noShippingAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'status',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'updateYourProfile',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'firstName',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'lastName',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'company',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addressLine1',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addressLine2',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'city',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'stateProvince',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'postalCode',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'country',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'phone',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'defaultAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'saving',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'save',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'cancel',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addName',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'editAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addressBook',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'noAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'default',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'edit',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'remove',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'profile',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'name',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'phoneNumber',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'emailAddress',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderId',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderDate',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'fulfillmentStatus',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'viewDetails',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusCancelled',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusError',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusFailure',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusOpen',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusPending',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderStatusSuccess',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
       ],
     }),
@@ -265,47 +265,47 @@ export default defineType({
       fields: [
         defineField({
           name: 'heading',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'proceedToCheckout',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'orderSummary',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'subtotal',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'discounts',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'applyDiscount',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'discountCode',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'remove',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'quantity',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'continueShopping',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'emptyMessage',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
       ],
     }),
@@ -317,88 +317,88 @@ export default defineType({
         defineField({
           title: 'Sort by',
           name: 'sortBy',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sort by - Featured',
           name: 'sortFeatured',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sort by - Price Low to High',
           name: 'sortLowHigh',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sort by - Price High to Low',
           name: 'sortHighLow',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sort by - Best selling',
           name: 'sortBestSelling',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sort by - Newest',
           name: 'sortNewest',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'filterAndSort',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'from',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'to',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'filterInStock',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'filterOutOfStock',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'viewAll',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'clearFilters',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'clear',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'apply',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'loading',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'loadPrevious',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'loadMoreProducts',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'noProductFound',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'noCollectionFound',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
       ],
     }),
@@ -410,21 +410,21 @@ export default defineType({
         defineField({
           title: 'Add to cart',
           name: 'addToCart',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'sale',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Sold out',
           name: 'soldOut',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Quantity Selector Label',
           name: 'quantitySelector',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
       ],
     }),
@@ -436,30 +436,30 @@ export default defineType({
         defineField({
           title: 'Page not found',
           name: 'pageNotFound',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Server error',
           name: 'serverError',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'Section error',
           name: 'sectionError',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           title: 'reloadPage',
           name: 'reloadPage',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'missingAddressId',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
         defineField({
           name: 'addressCreation',
-          type: 'internationalizedArrayString',
+          type: 'string',
         }),
       ],
     }),

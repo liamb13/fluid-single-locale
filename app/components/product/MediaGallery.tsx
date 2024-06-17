@@ -9,7 +9,7 @@ import {useLoaderData} from '@remix-run/react';
 import {flattenConnection} from '@shopify/hydrogen';
 import React, {useCallback, useState} from 'react';
 
-import type {loader} from '~/routes/($locale).products.$productHandle';
+import type {loader} from '~/routes/products.$productHandle';
 
 import {useDevice} from '~/hooks/useDevice';
 import {type AspectRatioData, cn} from '~/lib/utils';

@@ -10,6 +10,7 @@ import {Footer} from './Footer';
 import {FramerMotion} from './FramerMotion';
 import {Header} from './Header';
 import {NavigationProgressBar} from './NavigationProgressBar';
+import {DEFAULT_LOCALE} from 'countries';
 
 const VisualEditing = lazy(() =>
   import('~/components/sanity/VisualEditing').then((mod) => ({
@@ -22,12 +23,12 @@ export type LayoutProps = {
 };
 
 export function Layout({children = null}: LayoutProps) {
-  const {env, locale, sanityPreviewMode} = useRootLoaderData();
+  const {env, sanityPreviewMode} = useRootLoaderData();
 
   return (
     <ShopifyProvider
-      countryIsoCode={locale.country || 'US'}
-      languageIsoCode={locale.language || 'EN'}
+      countryIsoCode={DEFAULT_LOCALE.country || 'US'}
+      languageIsoCode={DEFAULT_LOCALE.language || 'EN'}
       storeDomain={env.PUBLIC_STORE_DOMAIN}
       storefrontApiVersion={env.PUBLIC_STOREFRONT_API_VERSION}
       storefrontToken={env.PUBLIC_STOREFRONT_API_TOKEN}

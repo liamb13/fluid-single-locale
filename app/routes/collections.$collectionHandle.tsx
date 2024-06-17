@@ -4,7 +4,6 @@ import type {CollectionDetailsQuery} from 'storefrontapi.generated';
 import {useLoaderData} from '@remix-run/react';
 import {Analytics} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
-import {DEFAULT_LOCALE} from 'countries';
 import invariant from 'tiny-invariant';
 
 import {CmsSection} from '~/components/CmsSection';
@@ -22,15 +21,12 @@ export const meta: MetaFunction<typeof loader> = mergeMeta(({matches}) =>
 );
 export async function loader({context, params, request}: LoaderFunctionArgs) {
   const {collectionHandle} = params;
-  const {locale, sanity, storefront} = context;
-  const language = locale?.language.toLowerCase();
+  const {sanity, storefront} = context;
 
   invariant(collectionHandle, 'Missing collectionHandle param');
 
   const queryParams = {
     collectionHandle,
-    defaultLanguage: DEFAULT_LOCALE.language.toLowerCase(),
-    language,
   };
 
   const collectionData = Promise.all([
@@ -40,9 +36,7 @@ export async function loader({context, params, request}: LoaderFunctionArgs) {
     }),
     storefront.query<CollectionDetailsQuery>(COLLECTION_QUERY, {
       variables: {
-        country: storefront.i18n.country,
         handle: collectionHandle,
-        language: storefront.i18n.language,
       },
     }),
   ]);

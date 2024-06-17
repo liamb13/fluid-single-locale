@@ -8,7 +8,6 @@ import {
   RICHTEXT_BLOCKS,
 } from './blocks';
 import {COLOR_SCHEME_FRAGMENT, IMAGE_FRAGMENT} from './fragments';
-import {getIntValue} from './utils';
 
 export const contentPositionValues = [
   'top_left',
@@ -59,13 +58,7 @@ export const IMAGE_BANNER_SECTION_FRAGMENT = {
   _type: q.literal('imageBannerSection'),
   backgroundImage: q('backgroundImage').grab(IMAGE_FRAGMENT).nullable(),
   bannerHeight: q.number().nullable(),
-  content: q(
-    `coalesce(
-        content[_key == $language][0].value[],
-        content[_key == $defaultLanguage][0].value[],
-      )[]`,
-    {isArray: true},
-  )
+  content: q('content', {isArray: true})
     .filter()
     .select(BANNER_RICHTEXT_BLOCKS)
     .nullable(),
@@ -99,7 +92,7 @@ export const FEATURED_COLLECTION_SECTION_FRAGMENT = {
     })
     .nullable(),
   desktopColumns: q.number().nullable(),
-  heading: [getIntValue('heading'), q.string().nullable()],
+  heading: q.string().nullable(),
   maxProducts: q.number().nullable(),
   settings: SECTION_SETTINGS_FRAGMENT,
   viewAll: q.boolean().nullable(),
@@ -142,13 +135,7 @@ export const FEATURED_PRODUCT_SECTION_FRAGMENT = {
       }),
     })
     .nullable(),
-  richtext: q(
-    `coalesce(
-        richtext[_key == $language][0].value[],
-        richtext[_key == $defaultLanguage][0].value[],
-      )[]`,
-    {isArray: true},
-  )
+  richtext: q('richtext', {isArray: true})
     .filter()
     .select(PRODUCT_RICHTEXT_BLOCKS)
     .nullable(),
@@ -166,13 +153,7 @@ export const PRODUCT_INFORMATION_SECTION_FRAGMENT = {
   desktopMediaPosition: z.enum(['left', 'right']).nullable(),
   desktopMediaWidth: z.enum(['small', 'medium', 'large']).nullable(),
   mediaAspectRatio: z.enum(aspectRatioValues).nullable(),
-  richtext: q(
-    `coalesce(
-      richtext[_key == $language][0].value[],
-      richtext[_key == $defaultLanguage][0].value[],
-    )[]`,
-    {isArray: true},
-  )
+  richtext: q('richtext', {isArray: true})
     .filter()
     .select(PRODUCT_RICHTEXT_BLOCKS)
     .nullable(),
@@ -188,7 +169,7 @@ export const RELATED_PRODUCTS_SECTION_FRAGMENT = {
   _key: q.string().nullable(),
   _type: q.literal('relatedProductsSection'),
   desktopColumns: q.number().nullable(),
-  heading: [getIntValue('heading'), q.string().nullable()],
+  heading: q.string().nullable(),
   maxProducts: q.number().nullable(),
   settings: SECTION_SETTINGS_FRAGMENT,
 } satisfies Selection;
@@ -233,7 +214,7 @@ export const CAROUSEL_SECTION_FRAGMENT = {
     })
     .nullable(),
   slidesPerViewDesktop: q.number().nullable(),
-  title: [getIntValue('title'), q.string()],
+  title: q.string(),
 } satisfies Selection;
 
 /*
@@ -247,13 +228,7 @@ export const RICHTEXT_SECTION_FRAGMENT = {
   contentAlignment: z.enum(contentAlignmentValues).nullable(),
   desktopContentPosition: z.enum(contentAlignmentValues).nullable(),
   maxWidth: q.number().nullable(),
-  richtext: q(
-    `coalesce(
-      richtext[_key == $language][0].value[],
-      richtext[_key == $defaultLanguage][0].value[],
-    )[]`,
-    {isArray: true},
-  )
+  richtext: q(`richtext`, {isArray: true})
     .filter()
     .select(RICHTEXT_BLOCKS)
     .nullable(),

@@ -12,10 +12,8 @@ import {
 */
 export const PRODUCT_QUERY = `#graphql
 query Product(
-  $country: CountryCode
-  $language: LanguageCode
   $handle: String!
-) @inContext(country: $country, language: $language) {
+) {
   product(handle: $handle) {
     id
     title
@@ -59,10 +57,8 @@ ${PRODUCT_VARIANT_FRAGMENT}
 
 export const FEATURED_PRODUCT_QUERY = `#graphql
 query FeaturedProduct(
-  $country: CountryCode
-  $language: LanguageCode
   $id: ID!
-) @inContext(country: $country, language: $language) {
+) {
   product(id: $id) {
     id
     title
@@ -88,10 +84,8 @@ ${PRODUCT_VARIANT_FRAGMENT}
 export const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   query productRecommendations(
     $count: Int
-    $country: CountryCode
-    $language: LanguageCode
     $productId: ID!
-  ) @inContext(country: $country, language: $language) {
+  ) {
     mainProduct: product(id: $productId) {
       id
     }
@@ -109,13 +103,11 @@ export const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 
 export const ALL_PRODUCTS_QUERY = `#graphql
   query AllProducts(
-    $country: CountryCode
-    $language: LanguageCode
     $first: Int
     $last: Int
     $startCursor: String
     $endCursor: String
-  ) @inContext(country: $country, language: $language) {
+  ) {
     products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
       nodes {
         ...ProductCard
@@ -138,10 +130,8 @@ export const ALL_PRODUCTS_QUERY = `#graphql
 */
 export const VARIANTS_QUERY = `#graphql
   query variants(
-    $country: CountryCode
-    $language: LanguageCode
     $handle: String!
-  ) @inContext(country: $country, language: $language) {
+  ) {
     product(handle: $handle) {
       variants(first: 250) {
         nodes {
@@ -160,14 +150,12 @@ export const VARIANTS_QUERY = `#graphql
 */
 export const COLLECTIONS_QUERY = `#graphql
   query Collections(
-    $country: CountryCode
-    $language: LanguageCode
     $first: Int
     $last: Int
     $query: String
     $startCursor: String
     $endCursor: String
-  ) @inContext(country: $country, language: $language) {
+  ) {
     collections(first: $first, last: $last, before: $startCursor, after: $endCursor, query: $query) {
       nodes {
         id
@@ -196,9 +184,7 @@ export const COLLECTIONS_QUERY = `#graphql
 export const COLLECTION_QUERY = `#graphql
   query CollectionDetails(
     $handle: String!
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
+  ) {
     collection(handle: $handle) {
       id
       handle
@@ -224,8 +210,6 @@ export const COLLECTION_QUERY = `#graphql
 export const COLLECTION_PRODUCT_GRID_QUERY = `#graphql
   query CollectionProductGrid(
     $id: ID!
-    $country: CountryCode
-    $language: LanguageCode
     $filters: [ProductFilter!]
     $sortKey: ProductCollectionSortKeys!
     $reverse: Boolean
@@ -233,7 +217,7 @@ export const COLLECTION_PRODUCT_GRID_QUERY = `#graphql
     $last: Int
     $startCursor: String
     $endCursor: String
-  ) @inContext(country: $country, language: $language) {
+  ) {
     collection(id: $id) {
       id
       handle
@@ -275,10 +259,8 @@ export const COLLECTION_PRODUCT_GRID_QUERY = `#graphql
 export const FEATURED_COLLECTION_QUERY = `#graphql
   query FeaturedCollection(
     $id: ID!
-    $country: CountryCode
-    $language: LanguageCode
     $first: Int
-  ) @inContext(country: $country, language: $language) {
+  ) {
     collection(id: $id) {
       id
       handle

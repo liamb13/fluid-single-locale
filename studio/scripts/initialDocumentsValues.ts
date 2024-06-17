@@ -17,28 +17,22 @@ export const initialDocumentsValues = [
         mediaAspectRatio: 'square',
         richtext: [
           {
-            _key: 'en',
-            _type: 'internationalizedArrayProductRichtextValue',
-            value: [
-              {
-                _key: nanoid(),
-                _type: 'shopifyTitle',
-              },
-              {
-                _key: nanoid(),
-                _type: 'price',
-              },
-              {
-                _key: nanoid(),
-                _type: 'shopifyDescription',
-              },
-              {
-                _key: nanoid(),
-                _type: 'addToCartButton',
-                quantitySelector: true,
-                shopPayButton: true,
-              },
-            ],
+            _key: nanoid(),
+            _type: 'shopifyTitle',
+          },
+          {
+            _key: nanoid(),
+            _type: 'price',
+          },
+          {
+            _key: nanoid(),
+            _type: 'shopifyDescription',
+          },
+          {
+            _key: nanoid(),
+            _type: 'addToCartButton',
+            quantitySelector: true,
+            shopPayButton: true,
           },
         ],
         settings: {
@@ -65,13 +59,7 @@ export const initialDocumentsValues = [
         },
         maxProducts: 6,
         desktopColumns: 3,
-        heading: [
-          {
-            _type: 'internationalizedArrayStringValue',
-            _key: DEFAULT_LOCALE.language.toLowerCase(),
-            value: 'Related products',
-          },
-        ],
+        heading: 'Related products',
       },
     ],
   },
@@ -110,13 +98,7 @@ export const initialDocumentsValues = [
       _type: 'slug',
       current: 'collections',
     },
-    title: [
-      {
-        _key: DEFAULT_LOCALE.language.toLowerCase(),
-        _type: 'internationalizedArrayStringValue',
-        value: 'Collections',
-      },
-    ],
+    title: 'Collections',
   },
   // Products page
   {
@@ -126,13 +108,7 @@ export const initialDocumentsValues = [
       _type: 'slug',
       current: 'products',
     },
-    title: [
-      {
-        _key: DEFAULT_LOCALE.language.toLowerCase(),
-        _type: 'internationalizedArrayStringValue',
-        value: 'Products',
-      },
-    ],
+    title: 'Products',
   },
   // Light Color Scheme
   {

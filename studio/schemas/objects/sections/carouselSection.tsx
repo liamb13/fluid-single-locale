@@ -21,7 +21,7 @@ export default defineField({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'internationalizedArrayString',
+      type: 'string',
     }),
     defineField({
       name: 'pagination',

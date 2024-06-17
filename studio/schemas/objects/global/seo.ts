@@ -13,7 +13,7 @@ export default defineField({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'internationalizedArrayString',
+      type: 'string',
       description: 'Seo meta title',
       // components: {
       //   field: SeoTitle,
@@ -25,7 +25,7 @@ export default defineField({
     defineField({
       name: 'description',
       description: 'Seo meta description',
-      type: 'internationalizedArrayText',
+      type: 'text',
       title: 'Description',
       // validation: (Rule: StringRule) => Rule.max(160).warning('Should be under 70 characters'),
     }),

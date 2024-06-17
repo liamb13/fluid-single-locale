@@ -27,8 +27,6 @@ export const loader = async ({
   const {collections} = await storefront.query(COLLECTIONS_QUERY, {
     variables: {
       ...variables,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
     },
   });
 

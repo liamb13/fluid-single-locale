@@ -8,7 +8,7 @@ export default defineField({
   fields: [
     defineField({
       name: 'content',
-      type: 'internationalizedArrayBannerRichtext',
+      type: 'bannerRichtext',
     }),
     defineField({
       type: 'contentPosition',

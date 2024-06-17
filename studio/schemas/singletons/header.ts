@@ -25,7 +25,7 @@ export default defineType({
     defineField({
       name: 'annoucementBar',
       group: 'announcementBar',
-      type: 'internationalizedArrayAnnouncementBar',
+      type: 'announcementBar',
     }),
     defineField({
       name: 'annoucementBarColorScheme',
@@ -42,7 +42,7 @@ export default defineType({
     defineField({
       name: 'menu',
       group: 'navigation',
-      type: 'internationalizedArrayHeaderNavigation',
+      type: 'headerNavigation',
     }),
     defineField({
       name: 'colorScheme',

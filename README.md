@@ -1,6 +1,10 @@
 <h1 align='center'>
-  Fluid
+  Fluid (Single Locale Version)
 </h1>
+
+> [!NOTE]  
+> This is a fork of the original [Fluid](https://github.com/frontvibe/fluid). Adjusted for a single locale. It is unlikely to stay up to date with the original project, and should be used as a reference only.
+
 
 ![Fluid](https://github.com/frontvibe/fluid/assets/10447155/0a6b881f-7034-4002-8246-240ea1138d4b)
 

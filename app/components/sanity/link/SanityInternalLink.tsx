@@ -7,7 +7,6 @@ import {stegaClean} from '@sanity/client/stega';
 import type {INTERNAL_LINK_FRAGMENT} from '~/qroq/links';
 
 import {cn} from '~/lib/utils';
-import {useRootLoaderData} from '~/root';
 
 type SanityInternalLinkProps = TypeFromSelection<typeof INTERNAL_LINK_FRAGMENT>;
 
@@ -17,7 +16,6 @@ export function SanityInternalLink(props: {
   data?: SanityInternalLinkProps;
   onClick?: () => void;
 }) {
-  const {locale} = useRootLoaderData();
   const {children, className, data} = props;
 
   if (!data) return null;
@@ -31,15 +29,15 @@ export function SanityInternalLink(props: {
   const path: () => string = () => {
     switch (documentType) {
       case 'page':
-        return `${locale.pathPrefix}/${slug}`;
+        return `/${slug}`;
       case 'product':
-        return `${locale.pathPrefix}/products/${slug}`;
+        return `/products/${slug}`;
       case 'collection':
-        return `${locale.pathPrefix}/collections/${slug}`;
+        return `/collections/${slug}`;
       case 'home':
-        return locale.pathPrefix || '/';
+        return '/';
       case 'blogPost':
-        return `${locale.pathPrefix}/blog/${slug}`;
+        return `/blog/${slug}`;
       default:
         return '';
     }

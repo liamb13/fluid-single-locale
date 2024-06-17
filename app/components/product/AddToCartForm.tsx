@@ -5,7 +5,6 @@ import {CartForm, OptimisticInput, ShopPayButton} from '@shopify/hydrogen';
 import {useEffect, useState} from 'react';
 import {useIdle, useSessionStorage} from 'react-use';
 
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 import {useSelectedVariant} from '~/hooks/useSelectedVariant';
 import {cn} from '~/lib/utils';
@@ -26,7 +25,7 @@ export function AddToCartForm(props: {
   const selectedVariant = useSelectedVariant({variants});
   const isOutOfStock = !selectedVariant?.availableForSale;
   const [quantity, setQuantity] = useState(1);
-  const cartPath = useLocalePath({path: '/cart'});
+  const cartPath = '/cart';
   const navigationIsLoading = navigation.state !== 'idle';
 
   return (

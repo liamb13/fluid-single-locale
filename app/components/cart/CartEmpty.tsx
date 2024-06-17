@@ -2,7 +2,6 @@ import {Link} from '@remix-run/react';
 import {cx} from 'class-variance-authority';
 import {AnimatePresence, m} from 'framer-motion';
 
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 import {cn} from '~/lib/utils';
 
@@ -30,7 +29,7 @@ export function CartEmpty({
     ]),
   };
 
-  const collectionsPath = useLocalePath({path: '/collections'});
+  const collectionsPath = '/collections';
 
   return (
     <AnimatePresence>

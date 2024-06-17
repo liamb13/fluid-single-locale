@@ -22,10 +22,9 @@ import {Button} from '~/components/ui/Button';
 import {Dialog, DialogContent} from '~/components/ui/Dialog';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {CUSTOMER_DETAILS_QUERY} from '~/graphql/customer-account/queries';
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 
-import {doLogout} from './($locale).account_.logout';
+import {doLogout} from './account_.logout';
 
 export const headers = routeHeaders;
 
@@ -106,7 +105,7 @@ interface AccountType {
 function Account({customer}: AccountType) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
-  const path = useLocalePath({path: '/account/logout'});
+  const path = '/account/logout';
   const {themeContent} = useSanityThemeContent();
 
   const heading = customer
@@ -150,7 +149,7 @@ function AccountOrderHistory({orders}: OrderCardsProps) {
 }
 
 function EmptyOrders() {
-  const path = useLocalePath({path: '/'});
+  const path = '/';
   const {themeContent} = useSanityThemeContent();
   return (
     <div>

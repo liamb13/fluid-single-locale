@@ -3,7 +3,6 @@ import type {Cart as CartType} from '@shopify/hydrogen/storefront-api-types';
 import {CartForm} from '@shopify/hydrogen';
 
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 import {cn} from '~/lib/utils';
 
@@ -88,7 +87,7 @@ function UpdateDiscountForm({
   children: React.ReactNode;
   discountCodes?: string[];
 }) {
-  const cartPath = useLocalePath({path: '/cart'});
+  const cartPath = '/cart';
 
   return (
     <CartForm

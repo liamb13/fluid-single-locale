@@ -9,7 +9,7 @@ export default defineField({
   fields: [
     defineField({
       name: 'richtext',
-      type: 'internationalizedArrayProductRichtext',
+      type: 'productRichtext',
     }),
     defineField({
       type: 'string',

@@ -12,7 +12,7 @@ import {twMerge} from 'tailwind-merge';
 import type {THEME_CONTENT_FRAGMENT} from '~/qroq/themeContent';
 
 import type {aspectRatioValues} from '../qroq/sections';
-import type {I18nLocale} from './type';
+import {DEFAULT_LOCALE} from 'countries';
 
 export function useVariantUrl(
   handle: string,
@@ -41,12 +41,7 @@ export function getVariantUrl({
   searchParams: URLSearchParams;
   selectedOptions: SelectedOption[];
 }) {
-  const match = /(\/[a-zA-Z]{2}-[a-zA-Z]{2}\/)/g.exec(pathname);
-  const isLocalePathname = match && match.length > 0;
-
-  const path = isLocalePathname
-    ? `${match![0]}products/${handle}`
-    : `/products/${handle}`;
+  const path = `/products/${handle}`;
 
   selectedOptions.forEach((option) => {
     searchParams.set(option.name, option.value);
@@ -86,11 +81,14 @@ export function isLocalPath(url: string) {
   return false;
 }
 
-export function parseAsCurrency(value: number, locale: I18nLocale) {
-  return new Intl.NumberFormat(locale.language + '-' + locale.country, {
-    currency: locale.currency,
-    style: 'currency',
-  }).format(value);
+export function parseAsCurrency(value: number) {
+  return new Intl.NumberFormat(
+    DEFAULT_LOCALE.language + '-' + DEFAULT_LOCALE.country,
+    {
+      currency: DEFAULT_LOCALE.currency,
+      style: 'currency',
+    },
+  ).format(value);
 }
 
 export function cn(...inputs: ClassValue[]) {
@@ -130,10 +128,6 @@ export function generateShopifyImageThumbnail(url?: null | string) {
     imageUrl.origin + imageUrl.pathname.replace('.jpg', size);
 
   return thumbnailUrl;
-}
-
-export function setShowTrailingZeroKeyValue(locale: I18nLocale) {
-  return locale.country + '_' + locale.language + +'_' + locale.pathPrefix;
 }
 
 export function statusMessage(

@@ -18,7 +18,7 @@ import {Input} from '~/components/ui/Input';
 import {CUSTOMER_UPDATE_MUTATION} from '~/graphql/customer-account/mutations';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 
-import {doLogout} from './($locale).account_.logout';
+import {doLogout} from './account_.logout';
 
 export interface AccountOutletContext {
   customer: Customer;
@@ -82,7 +82,7 @@ export const action: ActionFunction = async ({context, params, request}) => {
       data?.customerUpdate?.userErrors?.[0]?.message,
     );
 
-    return redirect(params?.locale ? `${params.locale}/account` : '/account', {
+    return redirect('/account', {
       headers: {
         'Set-Cookie': await context.session.commit(),
       },

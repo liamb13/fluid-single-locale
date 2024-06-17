@@ -26,8 +26,6 @@ export async function loader({
   const data = await storefront.query(ALL_PRODUCTS_QUERY, {
     variables: {
       ...variables,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
     },
   });
 

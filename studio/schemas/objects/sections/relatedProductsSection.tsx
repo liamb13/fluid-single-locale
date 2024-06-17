@@ -9,7 +9,7 @@ export default defineField({
   fields: [
     defineField({
       name: 'heading',
-      type: 'internationalizedArrayString',
+      type: 'string',
     }),
     defineField({
       name: 'maxProducts',

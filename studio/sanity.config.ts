@@ -1,20 +1,17 @@
 import {defineConfig} from 'sanity';
 import {structureTool} from 'sanity/structure';
 import {visionTool} from '@sanity/vision';
-import {internationalizedArray} from 'sanity-plugin-internationalized-array';
 import {media, mediaAssetSource} from 'sanity-plugin-media';
 import {fontPicker} from '@frontvibe/sanity-font-picker';
 import {colorPicker} from '@frontvibe/sanity-color-picker';
 import {rangeSlider} from '@frontvibe/sanity-plugin-range-slider';
 import {codeInput} from '@sanity/code-input';
 import {presentationTool} from '@sanity/presentation';
-import {languageFilter} from '@sanity/language-filter';
 import {groqdPlaygroundTool} from 'groqd-playground';
 
 import {schemaTypes} from './schemas';
 import {defaultDocumentNode, structure} from './structure';
 import {projectDetails} from './project.details';
-import {getAllLanguages} from '../countries';
 import {customDocumentActions} from './plugins/customDocumentActions';
 import {singletonActions, singletonsTypes} from './structure/singletons';
 import {locate} from './presentation/locate';
@@ -22,8 +19,7 @@ import {PreviewIcon} from './components/icons/Preview';
 
 const isDev = process.env.MODE === 'development';
 const {projectId, dataset, apiVersion, previewUrl} = projectDetails;
-const localePreviewUrl = 'http://localhost:3000';
-const languages = getAllLanguages();
+const localPreviewUrl = 'http://localhost:3000';
 const devOnlyPlugins = [
   visionTool({
     defaultApiVersion: apiVersion,
@@ -31,11 +27,7 @@ const devOnlyPlugins = [
   }),
   groqdPlaygroundTool(),
 ];
-const SANITY_STUDIO_PRODUCTION_URL = isDev
-  ? localePreviewUrl
-  : previewUrl
-    ? previewUrl
-    : localePreviewUrl;
+const SANITY_STUDIO_PRODUCTION_URL = isDev ? localPreviewUrl : previewUrl;
 
 export default defineConfig({
   name: 'default',
@@ -56,34 +48,6 @@ export default defineConfig({
       locate,
       icon: PreviewIcon,
       title: 'Preview',
-    }),
-    internationalizedArray({
-      languages: getAllLanguages(),
-      defaultLanguages: [languages[0].id],
-      fieldTypes: [
-        'string',
-        'text',
-        'slug',
-        'headerNavigation',
-        'announcementBar',
-        'productRichtext',
-        'richtext',
-        'bannerRichtext',
-      ],
-      buttonLocations: ['field'],
-    }),
-    languageFilter({
-      supportedLanguages: getAllLanguages(),
-      defaultLanguages: [languages[0].id],
-      documentTypes: [
-        'page',
-        'home',
-        'themeContent',
-        'header',
-        'footer',
-        'product',
-        'collection',
-      ],
     }),
     ...(isDev ? devOnlyPlugins : []),
   ],

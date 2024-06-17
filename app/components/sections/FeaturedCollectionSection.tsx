@@ -11,7 +11,6 @@ import {Suspense} from 'react';
 import type {SectionDefaultProps} from '~/lib/type';
 import type {FEATURED_COLLECTION_SECTION_FRAGMENT} from '~/qroq/sections';
 
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 
 import type {loader as indexLoader} from '../../routes/_index';
@@ -33,9 +32,7 @@ type FeaturedCollectionSectionProps = TypeFromSelection<
 export function FeaturedCollectionSection(
   props: {data: FeaturedCollectionSectionProps} & SectionDefaultProps,
 ) {
-  const collectionHandle = useLocalePath({
-    path: `/collections/${props.data.collection?.store.slug?.current}`,
-  });
+  const collectionHandle = `/collections/${props.data.collection?.store.slug?.current}`;
   const {themeContent} = useSanityThemeContent();
 
   return (

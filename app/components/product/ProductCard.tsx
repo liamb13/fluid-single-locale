@@ -5,7 +5,6 @@ import {stegaClean} from '@sanity/client/stega';
 import {flattenConnection} from '@shopify/hydrogen';
 import {cx} from 'class-variance-authority';
 
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityRoot} from '~/hooks/useSanityRoot';
 import {cn} from '~/lib/utils';
 
@@ -40,7 +39,7 @@ export function ProductCard(props: {
     columns?.mobile ? `${100 / columns.mobile}vw` : '100vw',
   ]);
 
-  const path = useLocalePath({path: `/products/${product?.handle}`});
+  const path = `/products/${product?.handle}`;
 
   const cardClass = cn(
     style === 'card'

@@ -14,7 +14,6 @@ import {
   createRequestHandler,
   getStorefrontHeaders,
 } from '@shopify/remix-oxygen';
-import {getLocaleFromRequest} from 'countries';
 
 import {CART_QUERY_FRAGMENT} from '~/graphql/fragments';
 import {envVariables} from '~/lib/env.server';
@@ -35,7 +34,6 @@ export default {
     try {
       const envVars = envVariables(env);
       const isDev = envVars.NODE_ENV === 'development';
-      const locale = getLocaleFromRequest(request);
       const waitUntil = executionContext.waitUntil.bind(executionContext);
 
       /*
@@ -53,7 +51,6 @@ export default {
        */
       const {storefront} = createStorefrontClient({
         cache,
-        i18n: {country: locale.country, language: locale.language},
         privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
         publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
         storeDomain: env.PUBLIC_STORE_DOMAIN,
@@ -113,7 +110,6 @@ export default {
           customerAccount,
           env: envVars,
           isDev,
-          locale,
           sanity,
           sanityPreviewMode,
           sanitySession,

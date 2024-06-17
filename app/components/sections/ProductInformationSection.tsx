@@ -8,7 +8,7 @@ import {Suspense, createContext, useContext} from 'react';
 
 import type {SectionDefaultProps} from '~/lib/type';
 import type {PRODUCT_INFORMATION_SECTION_FRAGMENT} from '~/qroq/sections';
-import type {loader} from '~/routes/($locale).products.$productHandle';
+import type {loader} from '~/routes/products.$productHandle';
 
 import {cn, getAspectRatioData} from '~/lib/utils';
 

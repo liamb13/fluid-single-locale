@@ -1,8 +1,8 @@
 {
-  "name": "fluid",
+  "name": "fluid-flamingo",
+  "version": "0.0.0",
   "private": true,
   "sideEffects": false,
-  "version": "0.0.0",
   "scripts": {
     "build": "shopify hydrogen build",
     "dev": "run-p dev:app dev:studio",
@@ -16,6 +16,17 @@
     "typecheck": "tsc --noEmit",
     "deploy:studio": "cd ./studio && run-s deploy"
   },
+  "browserslist": [
+    "defaults"
+  ],
+  "eslintIgnore": [
+    "build",
+    "node_modules",
+    "bin",
+    "*.d.ts",
+    "dist",
+    "studio/*"
+  ],
   "dependencies": {
     "@portabletext/react": "^3.1.0",
     "@radix-ui/react-accordion": "^1.1.2",
@@ -94,16 +105,5 @@
   },
   "engines": {
     "node": ">=16.13"
-  },
-  "browserslist": [
-    "defaults"
-  ],
-  "eslintIgnore": [
-    "build",
-    "node_modules",
-    "bin",
-    "*.d.ts",
-    "dist",
-    "studio/*"
-  ]
+  }
 }

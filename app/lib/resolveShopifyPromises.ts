@@ -147,10 +147,8 @@ function resolveFeaturedCollectionPromise({
 
       const promise = storefront.query(FEATURED_COLLECTION_QUERY, {
         variables: {
-          country: storefront.i18n.country,
           first,
           id: gid,
-          language: storefront.i18n.language,
         },
       });
 
@@ -191,9 +189,7 @@ function resolveCollectionListPromise({
 
       const promise = storefront.query(COLLECTIONS_QUERY, {
         variables: {
-          country: storefront.i18n.country,
           first,
-          language: storefront.i18n.language,
           query,
         },
       });
@@ -231,9 +227,7 @@ function resolveFeaturedProductPromise({
 
       const promise = storefront.query(FEATURED_PRODUCT_QUERY, {
         variables: {
-          country: storefront.i18n.country,
           id: gid,
-          language: storefront.i18n.language,
         },
       });
 
@@ -270,8 +264,6 @@ async function resolveRelatedProductsPromise({
       promise = storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
         variables: {
           count: section.maxProducts || 6,
-          country: storefront.i18n.country,
-          language: storefront.i18n.language,
           productId,
         },
       });
@@ -306,10 +298,8 @@ async function resolveCollectionProductGridPromise({
       promise = storefront.query(COLLECTION_PRODUCT_GRID_QUERY, {
         variables: {
           ...paginationVariables,
-          country: storefront.i18n.country,
           filters,
           id: collectionId,
-          language: storefront.i18n.language,
           reverse,
           sortKey,
         },

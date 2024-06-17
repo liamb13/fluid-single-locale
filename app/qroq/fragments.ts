@@ -58,13 +58,7 @@ export const SHADOW_FRAGMENT = {
 | Menu Fragment
 |--------------------------------------------------------------------------
 */
-export const MENU_FRAGMENT = q(
-  `coalesce(
-    menu[_key == $language][0].value[],
-    menu[_key == $defaultLanguage][0].value[],
-  )[]`,
-  {isArray: true},
-)
+export const MENU_FRAGMENT = q(`menu`, {isArray: true})
   .select(LINKS_LIST_SELECTION)
   .nullable();
 
@@ -111,13 +105,9 @@ export const ANNOUCEMENT_BAR_FRAGMENT = {
   text: q.string().nullable(),
 } satisfies Selection;
 
-export const ANNOUCEMENT_BAR_ARRAY_FRAGMENT = q(
-  `coalesce(
-    annoucementBar[_key == $language][0].value[],
-    annoucementBar[_key == $defaultLanguage][0].value[],
-  )[]`,
-  {isArray: true},
-)
+export const ANNOUCEMENT_BAR_ARRAY_FRAGMENT = q('annoucementBar', {
+  isArray: true,
+})
   .select({
     '_type == "announcement"': ANNOUCEMENT_BAR_FRAGMENT,
   })
@@ -203,7 +193,7 @@ export const SETTINGS_FRAGMENT = {
     })
     .nullable(),
   showCurrencyCodes: q.boolean().nullable(),
-  showTrailingZeros: q.array(q.string()).nullable(),
+  showTrailingZeros: q.boolean().nullable(),
   siteName: q.string().nullable(),
   snapchat: q.string().nullable(),
   socialSharingImagePreview: q('socialSharingImagePreview')

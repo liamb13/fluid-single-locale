@@ -15,7 +15,7 @@ export default defineField({
     }),
     defineField({
       name: 'richtext',
-      type: 'internationalizedArrayProductRichtext',
+      type: 'richtext',
     }),
     defineField({
       type: 'aspectRatios',

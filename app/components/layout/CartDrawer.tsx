@@ -7,7 +7,6 @@ import {Suspense, useCallback, useEffect, useMemo, useState} from 'react';
 
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useLocalePath} from '~/hooks/useLocalePath';
 import {useSanityThemeContent} from '~/hooks/useSanityThemeContent';
 import {cn} from '~/lib/utils';
 import {useRootLoaderData} from '~/root';
@@ -44,7 +43,7 @@ export function CartDrawer() {
 function Badge(props: {cart?: CartApiQueryFragment; count: number}) {
   const {count} = props;
   const isHydrated = useIsHydrated();
-  const path = useLocalePath({path: '/cart'});
+  const path = '/cart';
   const {themeContent} = useSanityThemeContent();
   const [cartOpen, setCartOpen] = useState(false);
   const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);

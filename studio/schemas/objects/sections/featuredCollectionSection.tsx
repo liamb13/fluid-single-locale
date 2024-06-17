@@ -11,7 +11,7 @@ export default defineField({
       name: 'heading',
       description:
         'Collection title from Shopify will be used if no heading is provided.',
-      type: 'internationalizedArrayString',
+      type: 'string',
     }),
     defineField({
       name: 'collection',
